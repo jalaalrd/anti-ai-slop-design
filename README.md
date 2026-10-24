@@ -1,8 +1,8 @@
 # anti-ai-slop-design
 
-A Claude skill that redesigns a web page or web app you've already built so it stops looking like every other AI-generated product. It works on a single HTML file or on a React / Next.js project.
+A Claude skill that designs or redesigns a web page or web app so it looks and feels made by a person instead of generated. It works on a single HTML file or on a React / Next.js project.
 
-It strips the obvious tells (purple gradients, emoji icons, identical three-card grids) and the newer, more tasteful ones: the warm-paper page with an italic accent word and a "New" pill, and the dashboard that opens on a row of metric cards. In their place it makes real decisions from the product itself: a concept, a first screen that shows evidence, real content, and type, colour and spacing rules applied on purpose. Then it checks the result still works on a phone and that no feature was lost.
+It strips the obvious AI tells and the newer, more tasteful ones, then makes real decisions from the product itself: a concept, a first screen that shows evidence, real content, and type, colour and spacing chosen on purpose. Beyond the look, it covers UI components and libraries, motion, mobile feel, polish details, worst-case data and a review process, each in its own reference file that Claude reads only when it needs it. A small script takes phone and desktop screenshots and scans for mechanical problems.
 
 It's the visual counterpart to Jalaal's anti-ai-slop-writing skill: same directive style, same refusal to accept the default output, aimed at how a product looks instead of how it reads.
 

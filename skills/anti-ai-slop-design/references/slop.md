@@ -1,5 +1,7 @@
 # The Slop Catalogue
 
+**Use this file at the start and at review, for every page. Never skip it.**
+
 SKILL.md names the four big faces of generated design. This file goes further: every other default you will meet, what each one looks like in a real section or screen, what to put there instead, and a set of quick tests you can run on a finished page. Read it when you are listing the slop in step 3 of the workflow, and again before you call the work done.
 
 ## How to use this file
@@ -24,6 +26,8 @@ These show up less often than the faces in SKILL.md, but each one is a recognisa
 
 SKILL.md describes it in a paragraph. In practice you can spot it by a cluster of choices that all say "I know about slop": an off-white page, headline type at 120px or larger, small uppercase monospace labels with section numbers, coordinates, or a ticking clock in the header, thin rules between every section, a single rust or olive accent, and an absence of photographs. The second version of the same reflex is the concept that borrows a transport timetable, a departure board or a ledger sheet, because those look "designed". They are fine ideas once. Used as the answer to every brief they become the new template.
 
+A third version is the "confident" palette: a deep navy or indigo ground with a single warm yellow or marigold accent and a chunky display font. It reads as considered, so it gets picked whenever slop has been avoided, and two unrelated products can end up looking like siblings. If your palette is that one, check it came from the concept and not from habit.
+
 What to do when you notice it:
 
 - Put a photograph, illustration, strong colour field or the real product on the first screen.
@@ -42,7 +46,7 @@ Taking things away does not produce design. A page stripped of gradients, cards,
 | Hero buttons | A solid button plus a ghost button | One action. A second route, if needed, is a text link. |
 | Trust strip | Greyscale logos of companies that never signed up | Real names with permission, or one real quote, or nothing. |
 | Features | Three or six cards with icon, bold title, one line | Show one feature working. If you list, use a plain list with the verb first. |
-| How it works | Numbered 1, 2, 3 with circles joined by a line | Only when order matters. Otherwise tell it as a short story with a picture of each moment. |
+| How it works | Numbered 1, 2, 3 with circles joined by a line | Numbered steps are fine when the content really is a sequence the user follows (copy.md agrees). Used as decoration they are a tell. Otherwise tell it as a short story with a picture of each moment. |
 | Stats | Four giant numbers with small captions | One number inside a sentence, with its source and date. |
 | Testimonials | A grid of cards, avatar, five stars, vague praise | One quote, specific, with a real name, place and photo, or none. |
 | Pricing | Three tiers, the middle one highlighted | Show the plans that exist. If there is one price, say it high on the page. |

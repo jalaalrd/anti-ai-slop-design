@@ -1,5 +1,7 @@
 # Motion
 
+**Press feedback on buttons alone? polish.md has the recipe; skip this file. Open it for anything beyond that.**
+
 Read this when a redesign touches animation, or when the product has none and needs a little. The aim is a page where movement explains something, and where one moment is worth remembering.
 
 AI-built pages tend to animate everything the same way: every block fades up on scroll, every card lifts on hover, a gradient orb drifts behind the hero. That is the motion version of the average page. People feel it as noise, even when they can't say why. The fix is the same as everywhere else in this skill: decide, per element, whether it moves and what the movement says.
@@ -202,7 +204,7 @@ const item = {
 
 Each product gets one animation people would describe to a friend. It comes from the concept sentence you wrote in your direction notes. It is not a fade-up, a hover lift, a logo marquee, a typing effect or a cursor follower; those fit any product and are the motion equivalent of stock photography.
 
-Some of the register, to show the size of the idea and not to be reused: a ticket-booth app where the confirmed ticket is stamped and perforated as it lands; a tailor's order board where a finished order's thread tightens and snaps; a weather app where the sky colour shifts with the hour at the scrubber's position.
+Some of the register, to show the size of the idea and not to be reused: a ticket-booth app where the confirmed ticket is stamped and perforated as it lands; a salon diary where a confirmed slot is ticked off in pen; a weather app where the sky colour shifts with the hour at the scrubber's position.
 
 Write the signature down before building it: the trigger, three or four key frames, timing and curve, and what the reduced-motion version looks like. The rest of the product stays quiet so that this one thing is seen. If you can't name it, it's fine for the product to have none; a quiet, well-timed interface beats a loud one.
 

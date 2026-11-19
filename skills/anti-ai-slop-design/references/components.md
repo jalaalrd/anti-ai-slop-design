@@ -1,5 +1,7 @@
 # Components That Feel Crafted
 
+**Read this when you need a component the page lacks. Skip it for a simple page with no library.**
+
 Read this when the redesign needs a component the page doesn't have yet, or when an existing component looks like the default version of itself. A page doesn't look designed because of a long list of effects. It looks designed because three or four moments on it were given real thought, and everything around them is quiet.
 
 ## The Rule: Borrow the Idea, Rebuild the Thing

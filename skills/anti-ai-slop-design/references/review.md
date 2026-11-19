@@ -1,17 +1,23 @@
 # Reviewing a Design Before You Call It Done
 
+**Read this before calling any design done. Skip the cross-platform items that don't apply (no Windows, no dark mode) and say so in the report.**
+
 The person who made a design is the worst judge of it. You see what you meant to make, and you've stopped noticing the clipped label because you know what it says. This file is a method for catching what you've gone blind to: score the work against a rubric, look at it the way a user will, run the checks on other platforms, and report honestly.
 
 Review after the stress test (`stress-test.md`) and after the app-specific work (`apps.md`) if the product is an app.
 
 ## Review with fresh eyes when you can
 
-If your tools let you start a second agent or a clean session, hand it the screenshots and the rubric, and ask it to score without being told your reasoning. It judges pixels. You judge intentions.
+A second reviewer is optional. If your setup allows a separate reviewer or a clean session, hand it the screenshots and the rubric, and ask it to score without being told your reasoning. It judges pixels. You judge intentions.
 
 - **Use the same reviewer for every round.** A new reviewer brings new taste, undoes the last reviewer's requests, and the scores never settle.
 - **Wait for the review before you edit.** Mechanical bugs (a clipped label, a broken link) can be fixed before round one. Design changes wait for the scores.
 - **Give the reviewer the context it needs:** what the product is, who uses it and what they do, the direction you chose (the concept sentence, the accent, the fonts), and which defaults you refused on purpose, so it doesn't ask for them back.
-- **Without a second agent,** do it yourself in a cold state: take the screenshots, close the code, and score only what you can see. Write each score before you look at the next screenshot.
+- **Without a second reviewer,** review yourself against the rubric, harder than feels fair, in a cold state: take the screenshots, close the code, and score only what you can see. Write each score before you look at the next screenshot.
+
+## Small page? Quick review
+
+For a single landing page or a small redesign, score six categories instead of all of them: product fit, first screen, copy, type and colour, phone layout, and honesty (every claim true, every button going somewhere real). Two rounds, and stop when none is below 3. Device checks you can't run go in the report as "not verified", not as low scores.
 
 ## The rubric
 
@@ -171,6 +177,10 @@ Designs often get checked on a single MacBook in a single browser. A large share
 - At 320 CSS pixels wide, the page should reflow into one column with no horizontal scroll, except for content that truly needs two dimensions (a data table, a map).
 - Do the same at 400% zoom on a 1280px window (it creates the same 320px viewport).
 - No text is clipped, no controls overlap, and nothing needs a pinch to read.
+
+### 200% text size
+
+- Set the browser's text size (or the root font size) to 200%. Breakpoints in `rem` or `em` move with it, and fixed-width columns collapse, so check the layout still wraps and nothing is clipped. Layouts built with `flex-wrap`, `auto-fit` and `minmax`, and `clamp()` hold up best (mobile.md has an example).
 
 ### Reduced motion
 

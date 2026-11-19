@@ -1,5 +1,7 @@
 # Choosing a Direction
 
+**Parts 1 to 4 are for every page. Skip Part 8 (stack notes) unless the project uses one of those stacks, and Part 5 if the owner supplies all imagery.**
+
 A direction is the small set of decisions that makes every screen of a product feel like it came from the same hand. Without one, each section gets designed from defaults and the whole thing averages out into slop. This file covers how to pick a direction, then how to turn it into type, colour, layout, imagery, copy and code.
 
 Every example value here (a hex code, a font, a width) shows the kind of decision to make. Copy none of them. Two projects that borrow the same values end up looking the same.
@@ -16,7 +18,7 @@ Add the category's cliché colour to the same note (navy for banks, sage for wel
 
 ### Step 2. Write the concept sentence
 
-One sentence: "[Product] is a [thing]." The thing comes from outside the web. It might be an object (a tailor's tape measure), a place (a Saturday market stall), a printed item (a bus timetable pinned at a stop), or a pastime (a draughts board). The sentence is a decision-maker. Later, when you wonder whether the button should be square or round, the concept answers.
+One sentence: "[Product] is a [thing]." The thing comes from outside the web. It might be an object (a bakery's paper bag with the price stamped on it), a place (a Saturday market stall), a printed item (a bus timetable pinned at a stop), or a pastime (a draughts board). The sentence is a decision-maker. Later, when you wonder whether the button should be square or round, the concept answers.
 
 Some sentences and what they imply:
 
@@ -34,7 +36,7 @@ Do not apply the concept as a costume. The chalkboard sentence does not mean a p
 
 ### Step 3. Explore several directions cheaply
 
-One direction is a guess. Make three different ones and compare them on the same footing.
+For a new design, one direction is a guess. Make three different ones and compare them on the same footing. For a redesign or a small page, one considered direction is enough: write down the default you're refusing, the direction you chose, and one line each on the two ideas you dropped. Then skip to Step 4.
 
 1. Write three concept sentences from three different places. At most one may be quiet paper-and-ink.
 2. Build only the first screen of each (the first viewport on a phone and on a laptop). Use real words, real data and plain HTML and CSS in separate files, `explore/a.html`, `b.html`, `c.html`. Spend a short, fixed time on each. The goal is to compare directions, and a finished page would be wasted effort if you choose a different route.
@@ -43,7 +45,7 @@ One direction is a guess. Make three different ones and compare them on the same
 5. Choose. Record the winner, then give one line on each rejected option explaining the loss. Playing it safe is frequently a mistake. Pick the most specific to this product.
 6. You may merge ideas, as long as the result keeps one voice. Note what came from where.
 
-If the owner is in the conversation, show the three and your pick before you continue.
+If the owner is in the conversation, show the options and your pick before you continue.
 
 ### Step 4. Write the tokens
 
@@ -79,7 +81,7 @@ A starting set grouped by what they do, all available free from Google Fonts. Ch
 | A serif with character for headings | Young Serif, DM Serif Display, Bodoni Moda |
 | Figures and code | IBM Plex Mono, Space Mono, Source Code Pro |
 
-Test the language before you commit. If the audience writes Yoruba, Igbo, Twi or Vietnamese, confirm the face includes the marks (ẹ, ọ, ṣ, ń, ɔ). Type the actual words into the sample at fonts.google.com. If the face lacks them, the browser quietly swaps in another font for those letters and spoils the rhythm. Noto Sans and Noto Serif cover the widest range.
+Test the language before you commit. If the audience writes Yoruba, Igbo, Twi or Vietnamese, confirm the face includes the marks (ẹ, ọ, ṣ, ń, ɔ). Having the glyphs isn't enough, because tone marks are combining characters that need to sit in the right place. Render a real name at heading size, such as "Fúnmiláyọ̀ Adéṣínà" and "Ọlọ́run", and look at it: a grave floating sideways, or two marks colliding on a dot-below letter, means the face fails. If it fails, pick a font with good Yoruba support (Noto Sans and Noto Serif cover the widest range), or let the fallback font handle the marks. If the face lacks the letters, the browser quietly swaps in another font for them and spoils the rhythm.
 
 ### Pairing
 
@@ -123,6 +125,8 @@ Visitors on slow connections, older Android phones and Windows see your fallback
 Use `font-display: swap`. In Next.js, `next/font` self-hosts the file and adjusts the fallback so nothing jumps. In a single HTML file, a Google Fonts `<link>` works if you add `preconnect` hints and keep to two families and the weights you use. Where reliability matters (a stage demo, patchy connectivity), download the font and serve it from your own folder.
 
 ## Part 3: Colour
+
+**First, name the reflex.** Write the palette you'd choose without thinking. If it's navy or indigo with a yellow accent, cream with forest green, near-black with lime, or off-white with rust, treat it as the default you're refusing and derive the colours from the concept instead: the real colours of the object, place or material in your concept sentence.
 
 ### Roles, then values
 
@@ -249,8 +253,9 @@ Redesigning means replacing a look and keeping the business.
 2. **Write the keep list.** Pages, features, forms, real photos, the logo, brand colours people recognise, copy that works, legal text. The new version must contain every item.
 3. **Harvest real assets.** Pull the logo (SVG if you can), photos, fonts and colours already in use, real copy and real numbers from the existing site or repo. Use them before inventing anything.
 4. **Differ from the old look.** The new direction should differ from the current one in several obvious ways (ground, type, main visual, layout), unless the owner asked for a gentle refresh. Say which parts you kept.
-5. **Leave these decisions to the owner.** Renaming the business, replacing the logo, restructuring navigation, removing a page, changing how prices are shown, rewriting legal text. List them in your report and wait for approval.
-6. **Show before and after.** Two screenshots side by side, desktop and phone.
+5. **Make the cut list.** Check every claim, number, quote and logo against the facts you have (SKILL.md, workflow step 2), and point buttons with nowhere to go at a real fallback such as a form anchor, WhatsApp or email.
+6. **Leave these decisions to the owner.** Renaming the business, replacing the logo, restructuring navigation, removing a page, changing how prices are shown, rewriting legal text. List them in your report and wait for approval.
+7. **Show before and after.** Two screenshots side by side, desktop and phone.
 
 ## Part 8: Stack notes
 

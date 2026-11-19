@@ -15,13 +15,16 @@ This file holds the rules and the workflow. The detail lives in `references/`, a
 |---|---|
 | [references/slop.md](references/slop.md) | Before you start, and again at review. The full catalogue of default looks and the tells to remove |
 | [references/direction.md](references/direction.md) | Choosing the concept, type, colour, layout, imagery and copy. Also for redesign specifics and stack notes |
+| [references/copy.md](references/copy.md) | Writing or judging any words on the page: headlines, buttons, sections, empty states, errors. Harry Dry's three tests plus line rules |
 | [references/components.md](references/components.md) | Choosing UI components and libraries, and rebuilding them on the project's own tokens |
 | [references/apps.md](references/apps.md) | The product is a web app (a tool people use), not a marketing page |
-| [references/motion.md](references/motion.md) | Adding or reviewing any animation |
+| [references/motion.md](references/motion.md) | Animation beyond button press feedback (that recipe is in polish.md) |
 | [references/mobile.md](references/mobile.md) | Anything people will use on a phone, which is almost everything |
 | [references/polish.md](references/polish.md) | The finishing pass: buttons, states, forms, depth, type details, dark mode |
 | [references/stress-test.md](references/stress-test.md) | Before calling it done: feed it worst-case data and fix what breaks |
 | [references/review.md](references/review.md) | Scoring the result, deciding when to stop, cross-platform checks, the final report |
+
+**Small page? Read less.** For a single landing page or a small redesign, read slop.md, copy.md, direction.md (Parts 1 to 4), the parts of polish.md that apply to what's on the page, the "Marketing pages" box in stress-test.md, and review.md's "Small page" quick review. Skip apps.md, components.md, the PWA, sheet and carousel parts of mobile.md, and the stack notes in direction.md unless the page needs them. Press feedback on buttons is in polish.md; open motion.md only for animation beyond that.
 
 And one script: `scripts/check.mjs` takes phone and desktop screenshots and scans the page for mechanical problems (see "Check It on Screen").
 
@@ -58,10 +61,11 @@ If the product shares more than three features with any of these, it isn't done.
 Before writing any CSS, write these down in the chat or in a short `DIRECTION.md`. references/direction.md has the detail.
 
 1. **The category default you're refusing.** What do the top competitors in this space have in common: layout, palette, fonts? What's the colour everyone in this category reaches for? Name it so you can steer clear.
-2. **A concept sentence:** "[Product] is a [thing]", where the thing comes from outside the web: a shop, an object, a place, something printed, a game. "This booking app is a well-run front desk." "This waitlist is a hand-painted shop sign." Every later choice should trace back to it.
+2. **A concept sentence:** "[Product] is a [thing]", where the thing comes from outside the web: a shop, an object, a place, something printed, a game. "This booking app is a well-run front desk." "This repair-shop page is the job tag tied to your item." Every later choice should trace back to it.
 3. **What makes the first screen worth looking at:** a real photo, an illustration, a bold shape or colour field, the product working, or real data. Large text on a plain background doesn't count.
 4. **Tokens, each with a reason:** one accent colour, at most two font families, a type scale, a spacing unit, a corner-radius rule.
-5. **For a new design, sketch more than one direction.** Try two or three takes on the first screen only, compare them side by side, and pick the one that's most this product. Write one line on why the others lost.
+   **Check the palette against the reflex.** Before you commit, write down the palette you'd reach for without thinking. If it's deep navy or indigo with a yellow, marigold or amber accent, that's the current "designed" default: in our own tests two unrelated products both landed on it. The same goes for cream with forest green, near-black with lime or orange, and off-white with one rust accent. Pick again from the concept: what colours does the thing in your concept sentence actually have?
+5. **Explore the direction.** For a new design, sketch two or three takes on the first screen only, compare them side by side, and pick the one that's most this product. Write one line on why the others lost. For a redesign or a small page, one considered direction is enough, but still write down the default you're refusing and one line on the two ideas you dropped.
 
 ## Structure
 
@@ -82,7 +86,15 @@ Before writing any CSS, write these down in the chat or in a short `DIRECTION.md
 
 ## Content First
 
-Write the real words and data before laying anything out: headlines, labels, buttons, prices, names, numbers. Use data that looks lived-in: uneven, specific, slightly messy ("3 orders due Friday, one running late"). Never "Lorem ipsum", "John Doe" or "Acme". The content shapes the layout. If anti-ai-slop-writing is available, run the copy through it.
+Write the real words and data before laying anything out: headlines, labels, buttons, prices, names, numbers. Use data that looks lived-in: uneven, specific, slightly messy ("3 orders due Friday, one running late"). Never "Lorem ipsum", "John Doe" or "Acme". The content shapes the layout.
+
+Every headline and claim must pass three tests (Harry Dry's, from Marketing Examples; detail and examples in references/copy.md):
+
+1. **Can I picture it?** Concrete and visual beats abstract.
+2. **Could it be proven wrong?** A specific, checkable claim beats "world-class".
+3. **Could only we say it?** If a competitor could paste the line on their site, rewrite it.
+
+Then cut words, say what the reader gets instead of what you do, use active voice and plain speech, and make buttons say what happens next. If anti-ai-slop-writing is available, run the final copy through it.
 
 ## Banned Patterns: Never Do These
 
@@ -146,20 +158,25 @@ Look at the result at phone width and desktop width before every review round.
 
 ```bash
 npm i -D playwright && npx playwright install chromium
-node .claude/skills/anti-ai-slop-design/scripts/check.mjs http://localhost:3000 --out shots
+# the script sits in the skill's folder: .claude/skills/... in the project, or ~/.claude/skills/... if installed for you
+node ~/.claude/skills/anti-ai-slop-design/scripts/check.mjs http://localhost:3000 --out shots
 ```
 
-It saves first-screen and full-page screenshots at 390px and 1440px (add `--dark` for dark mode, `--widths 320,768,1280` for more sizes). It flags sideways scroll, small tap targets, buttons with no name, images without alt text, emoji, gradient text, too many fonts and clipped text. It can also open a local HTML file directly. It exits with an error if anything fails. **Open every screenshot yourself.** The scan finds mechanics, and your eye judges design.
+It saves first-screen and full-page screenshots at 390px and 1440px (add `--dark` for dark mode, `--widths 320,768,1280` for more sizes, `--text 200` to enlarge text to 200% and catch layouts that collapse). It flags sideways scroll, small tap targets, buttons with no name, images without alt text, emoji, gradient text, too many fonts and clipped text, and names the elements at fault. It can also open a local HTML file directly, and it finds Playwright in your project, in `NODE_PATH`, or next to the script. It exits with an error if anything fails. **Open every screenshot yourself.** The scan finds mechanics, and your eye judges design.
 
 **Without it** (the browser won't install, or there's no dev server): review the code against references/slop.md and references/review.md, and ask the owner to open the live link on their phone and send a screenshot.
 
 ## The Workflow
 
 1. **Read the whole thing.** For a single file: markup, styles and scripts. For a project: pages, components, global styles, Tailwind or theme config. Understand what it does before touching how it looks.
-2. **Write the keep list** (redesigns): every page, section, feature, form, real piece of copy, real photo, logo and brand colour that has to survive. Everything on it must still be there at the end.
+2. **Keep list and cut list.** The keep list (redesigns): every page, section, feature, form, real piece of copy, real photo, logo and brand colour that has to survive. Everything on it must still be there at the end. The cut list (always): check every claim, number, testimonial, logo and feature mention against the facts you have. Cut what you can't verify, or replace it with a true, smaller claim, and list each cut as a decision for the owner. Two rules go with it:
+   - **Buttons with nowhere to go:** point them at the closest real thing (an anchor to a form, WhatsApp, email) and note it for the owner. Never leave a dead link.
+   - **Sample data:** label it clearly as an example ("Example order"). Never present an invented customer as real. Inside a labelled example, generic stand-ins ("Pharmacy A", a plausible time) are fine; real-looking names of real businesses need the owner's say-so.
+   - **A section that's entirely fake** (invented pricing tiers, a wall of made-up logos): remove the section, or replace it with one true line ("Free while in beta"). Don't keep an empty shell.
+   - **A colour that might be the brand's:** with no owner to ask, keep it somewhere in the palette unless it's the category cliché, and note it as a decision for the owner.
 3. **List the slop present,** pointing at specific elements, and say which default look(s) it matches (references/slop.md).
 4. **Decide the direction** (above, and references/direction.md). Commit to one and apply it everywhere.
-5. **Write or tidy the content** before the layout.
+5. **Write or tidy the content** before the layout, and run every headline and claim through the three copy tests (references/copy.md).
 6. **Strip the emoji** and swap in the chosen icon method, or cut the icon.
 7. **Build or rewrite the styles:** tokens first, then the first screen, then the rest, then states and dark mode. Bring in references/components.md, references/motion.md, references/mobile.md and, for apps, references/apps.md as you reach those parts.
 8. **Polish pass** with references/polish.md.
@@ -183,4 +200,6 @@ It saves first-screen and full-page screenshots at 390px and 1440px (add `--dark
 10. Does it survive worst-case data and a 320px screen?
 11. Does every animation have a purpose, and stop under reduced motion?
 12. Is everything on the keep list still there and working?
-13. Hide the logo. Could this belong to any other company in its category? If so, it isn't done.
+13. Does every headline pass the three copy tests: picture it, could be proven wrong, only we could say it?
+14. Is every claim, number, quote and logo true and sourced, every button pointing somewhere real, and every sample record labelled as an example?
+15. Hide the logo. Could this belong to any other company in its category? If so, it isn't done.

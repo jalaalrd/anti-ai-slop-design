@@ -1,5 +1,7 @@
 # Designing Web Apps
 
+**Read this when the product is a tool people use. Skip it for a marketing page.**
+
 A marketing page is visited once. A web app gets used for hours, by the same people, every day. The first impression matters less than the hundredth session, so design for the person who already knows what they want and wants it to take four seconds.
 
 Most generated apps fail the same way: they copy the shape of a SaaS dashboard (sidebar, search bar, row of stat cards, chart, table) whatever the product does. The rules below are for making that decision from the work.

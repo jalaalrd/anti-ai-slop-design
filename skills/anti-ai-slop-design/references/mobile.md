@@ -1,5 +1,7 @@
 # Giving a Web App a Native Feel on Phones
 
+**Read this for anything used on a phone. For a plain landing page, skip the PWA, bottom sheet, carousel and pull-to-refresh sections.**
+
 A page feels like a website on a phone because of a handful of small platform behaviours, not because of its design. Buttons stay highlighted after a tap, the layout is cut off by the browser bar, the page zooms when you focus a field, content slides under the notch. Each fix is a line or two of CSS or a meta tag. Together they separate a page that sits in a browser from one that feels installed.
 
 Each section below gives the symptom, the fix and the reason.
@@ -130,7 +132,7 @@ In landscape the left and right insets matter too.
 
 **Symptom.** The top bar of the phone is white on a dark page, or dark on a light one, or the brand colour does not match the header.
 
-**Fix.** Give each colour scheme its own value, set to the colour at the very top of your page, usually the header background and not the brand colour:
+**Fix.** Set the tag to the colour at the very top of your page, usually the header background and not the brand colour. A page with one colour scheme needs one plain `<meta name="theme-color" content="#faf9f6">`. Use media-specific tags only when there is both a light and a dark mode:
 
 ```html
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f6">
@@ -253,6 +255,15 @@ Test it installed. Standalone mode changes the viewport, safe areas and status b
 
 **Why it matters.** Installed, the app opens without browser chrome and gets its own icon and splash colour, which is much of what "native" means to the user.
 
+## Text Size and Breakpoints
+
+People enlarge text. Breakpoints written in `rem` or `em` move when they do, and fixed-width columns collapse or overflow. Test at 200% browser text size. Prefer layouts that wrap on their own (`flex-wrap`, grid with `auto-fit` and `minmax`, `clamp()`) over breakpoints:
+
+```css
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 1rem; }
+h1 { font-size: clamp(1.75rem, 6vw, 3rem); }
+```
+
 ## Testing on a Real Phone
 
 **Symptom.** Everything works in the desktop browser and feels wrong on the phone.
@@ -277,6 +288,6 @@ Test it installed. Standalone mode changes the viewport, safe areas and status b
 - `user-select: none` on `body`.
 - `touch-action: none` on something people need to scroll past.
 - Using `env(safe-area-inset-*)` in CSS while `viewport-fit=cover` is missing.
-- A single `theme-color` for both colour schemes.
+- One `theme-color` on a page that has both a light and a dark mode.
 - Device detection by user-agent string.
 - A claim that mobile works, based only on emulation.

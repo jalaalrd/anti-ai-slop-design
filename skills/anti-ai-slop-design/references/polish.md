@@ -1,5 +1,7 @@
 # Polish: The Details That Make UI Feel Finished
 
+**Read this on every build, after the layout is settled.**
+
 Read this after the direction, tokens and layout are settled. Polish is the last layer. It can't rescue a page with no point of view, but a page with a good point of view and none of this still feels like a draft.
 
 Most of these details are invisible when they're right. Nobody thanks you for a button that responds on press or a number that doesn't jitter. They just stop noticing the interface and get on with their task. When a detail is wrong, people can't say why, only that the product feels cheap.

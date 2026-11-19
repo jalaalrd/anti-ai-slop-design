@@ -1,5 +1,7 @@
 # Stress-Testing a Design With Worst-Case Data
 
+**Use this for any page that shows names, amounts or lists. For a static marketing page, do the "Marketing pages" box below and skip the rest.**
+
 A design that only works with the data it was drawn with is a mockup. Demo content gets picked, mostly without anyone noticing, because it looks good: names that fit on one line, every optional field filled, counts that never need a comma. Real customers show up with the other kind of data. Load that data on purpose, look at what breaks, and fix it before anyone else sees it.
 
 Run this pass after the visual redesign and before the review. It finds the problems a screenshot of the happy path hides, and it is the part of "looks designed" that survives contact with real users.
@@ -93,7 +95,7 @@ Translated text runs longer. German and Finnish often add 30 to 40% to English, 
 
 | Value | What usually breaks | Fix |
 |---|---|---|
-| `Ọlábísí Àjàyí` | Combining marks and dot-below letters get clipped by tight `line-height` with `overflow: hidden`; some fonts lack the glyphs and fall back to a mismatched face | `line-height` of at least 1.25 on text that can hold diacritics; choose a font that covers Yoruba (check for ọ, ẹ, ṣ and the tone marks); never clip text boxes vertically |
+| `Ọlábísí Àjàyí` | Combining marks and dot-below letters get clipped by tight `line-height` with `overflow: hidden`; some fonts lack the glyphs and fall back to a mismatched face | `line-height` of at least 1.25 on text that can hold diacritics; render "Fúnmiláyọ̀ Adéṣínà" and "Ọlọ́run" at heading size and look: stacked marks can float or collide even when the glyphs exist. If they do, choose a font with good Yoruba support or let the fallback font handle the marks; never clip text boxes vertically |
 | `Chinedu Ọkọrọ` and `Ìbàdàn` in search | Searching "ibadan" finds nothing | Normalise both sides: `s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase()` |
 | `فاطمة الزهراء بن عبد الله` | Punctuation and icons jump to the wrong side; list order is wrong in a right-to-left layout | `dir="auto"` on the element showing user text; logical properties (`margin-inline-start`, `padding-inline`) instead of left and right |
 | Latin text inside an Arabic sentence, or the reverse | The order of mixed text scrambles | Wrap the user value in `<bdi>` so it keeps its own direction |
@@ -141,12 +143,16 @@ Initials are a good canary. If your avatar fallback uses `name.split(" ")[0][0]`
 | Half the fields filled in a list | Misaligned rows | Fixed column positions, even when a cell is empty |
 | Every status at once | Badge widths vary and the column looks ragged | Render all values of the enum in one list and set `min-width` |
 
+### Marketing pages
+
+A static page's worst cases: the hero sample with long data, 200% text size, translated length, forced colours and 320px. Do those and you've covered most of this file.
+
 ## Step 3: Check the environment, not just the data
 
 Flip to the worst-case dataset, then change the conditions:
 
 - the width of the component's actual container (a list in a sidebar behaves differently from a full-page list), then 320px, then the widest layout it supports
-- browser zoom at 200%, or a raised root font size, because text grows and boxes don't
+- browser zoom at 200%, or a raised root font size, because text grows and boxes don't (and `rem` breakpoints move with it, so prefer layouts that wrap on their own)
 - dark mode
 - `dir="rtl"` on the wrapper, if the product serves Arabic or Hebrew readers
 - a touch device: any action that appears only on hover is unreachable, so it needs a visible or long-press alternative
